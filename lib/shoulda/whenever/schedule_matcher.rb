@@ -33,7 +33,9 @@ module Shoulda
         if duration.nil?
           jobs.values.flatten
         else
-          duration_to_fetch = if duration.is_a?(String) || duration.is_a?(Symbol)
+          duration_to_fetch = if duration.is_a?(String) ||
+                                 duration.is_a?(Symbol) ||
+                                 duration.is_a?(ActiveSupport::Duration)
                                 duration
                               else
                                 duration.to_i
